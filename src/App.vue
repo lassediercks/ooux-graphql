@@ -7,7 +7,9 @@
     </div>
     <div class="ooux" v-if="endpointData">
       <div class="ooux-column" v-for="object in filteredData.__schema.types" :key="object.name">
-        <div class="ooux-object">{{object.name}}</div>
+        <div class="ooux-object">
+          <div>{{object.name}}</div>
+        </div>
         <template v-if="object.fields">
           <div
             :class="[
@@ -40,7 +42,8 @@ const typesToHide = [
   "__Directive",
   "__DirectiveLocation",
   "CacheControlScope",
-  "Upload"
+  "Upload",
+  "Node"
 ];
 
 export default {
@@ -125,7 +128,7 @@ body {
   margin: 0;
 }
 .ooux {
-  margin-top: 120px;
+  margin-top: 78px;
   --blue: #0176ba;
   --yellow: #f9bb00;
   --red: #ee230d;
@@ -141,18 +144,23 @@ body {
   flex-direction: column;
 }
 .ooux-object {
+  min-width: 80px;
   color: white;
-  width: 80px;
+  padding: 10px;
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--blue);
   margin-bottom: 10px;
+  div {
+    text-overflow: ellipsis;
+  }
 }
 
 .ooux-content {
-  width: 80px;
+  padding: 10px;
+
   display: flex;
   align-items: center;
   justify-content: center;
